@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "ReadSensorVal.h"
 #include "Sender.h"
@@ -43,7 +44,7 @@ void GetTx_Sensor_val(float *SensorData,int totalSensorCnt,int totalSensorReadCn
     }
 }
 
-void GetTx_Sensor_val(void)
+void SendToServer(void)
 {
     float SensorOut[Max_Sensor][50];
     char buf[500];
