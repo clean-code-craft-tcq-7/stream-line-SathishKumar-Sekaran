@@ -35,7 +35,7 @@ void testCases_Sender()
         char buff[100];
         memset(buff,'\0',100);
         float SensorData[2][1] ={{20.5},{7.5}};
-        GetTx_Sensor_val(SensorData,2,1,buff);
+        GetTx_Sensor_val(*SensorData,2,1,buff);
         assert(strcmp(buff,"Temparature Sensor : Current Sensor\n20.50 : 7.50\n") == 0);
     }
     //totally 8 data's get 2 different sensors
@@ -43,7 +43,7 @@ void testCases_Sender()
         char buff[100];
         memset(buff,'\0',100);
         float SensorData[2][4] ={{20.5,14,28.9,36.7},{5.7,8.9,4.2,6.3}};
-        GetTx_Sensor_val(SensorData,2,4,buff);
+        GetTx_Sensor_val(*SensorData,2,4,buff);
         assert(strcmp(buff,"Temparature Sensor : Current Sensor\n20.50 : 5.70\n14.00 : 8.90\n28.90 : 4.20\n36.70 : 6.30\n") == 0);
     }
 }
