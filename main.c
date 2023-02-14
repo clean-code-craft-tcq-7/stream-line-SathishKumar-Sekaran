@@ -8,8 +8,8 @@
 void testSendToServer(char* buf);
 const FuncPtrTestSenderType sendFunPtr[] =
 {
-    SendToServer,
-    testSendToServer
+    (FuncPtrTestSenderType) SendToServer,
+    (FuncPtrTestSenderType) testSendToServer
 };
 
 void testSendToServer(char* buf)
