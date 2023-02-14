@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Sender.h"
-void testCases_Sender(void)
+
+void testCases_Sender()
 {
     //No Sensor Data
     {

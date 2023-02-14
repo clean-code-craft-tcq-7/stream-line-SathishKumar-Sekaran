@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "ReadSensorVal.h"
 #include "Sender.h"
 
@@ -49,6 +50,6 @@ void GetTx_Sensor_val(void)
     memset(buf,'\0',100);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
-    Send_Sensor_val(SensorOut,2,50,buf);
+    GetTx_Sensor_val(SensorOut,2,50,buf);
     write(STDOUT_FILENO, buf, sizeof(buf) - 1);
 }

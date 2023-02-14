@@ -19,7 +19,7 @@ void testSendToServer(char* buf)
     memset(buf,'\0',100);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
-    Send_Sensor_val(SensorOut,2,50,buf);
+    GetTx_Sensor_val(SensorOut,2,50,buf);
 }
 
 int main()
