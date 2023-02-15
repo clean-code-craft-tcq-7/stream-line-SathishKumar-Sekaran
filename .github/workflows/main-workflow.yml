@@ -17,6 +17,9 @@ jobs:
 
     - name: build
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o sender *.c*
+
+    - name: run help
+      run: ./sender
       
     - name: run
       run: ./sender -t
