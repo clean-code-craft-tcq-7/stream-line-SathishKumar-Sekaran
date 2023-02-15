@@ -4,6 +4,13 @@
 #include <unistd.h>
 #include "ReadSensorVal.h"
 #include "Sender.h"
+#include "testCases_Sender.h"
+
+const FuncPtrTestSenderType sendFunPtr[] =
+{
+    (FuncPtrTestSenderType) SendToServer,
+    (FuncPtrTestSenderType) testSendToServer
+};
 
 void GetTx_Sensor_val(float *SensorData,int totalSensorCnt,int totalSensorReadCnt,char *tx_Buffer)
 {
@@ -50,9 +57,5 @@ void SendToServer(char *buf)
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
-}
-
-void printTOConsole(char *buf)
-{
     write(STDOUT_FILENO, buf, strlen(buf));
 }
