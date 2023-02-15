@@ -7,7 +7,7 @@
 
 extern const FuncPtrTestSenderType sendFunPtr[2];
 
-void testSendToServer(char* buf,char* checkBuff);
+void testSendToServer(char* buf,char* checkBuff)
 {
     float SensorOut[Max_Sensor][50];
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
