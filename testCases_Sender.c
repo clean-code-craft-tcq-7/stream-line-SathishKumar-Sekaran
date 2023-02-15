@@ -9,18 +9,18 @@
 void testSendToServer()
 {
     float SensorOut[Max_Sensor][50];
-    char buf[500];
-    char checkBuff[500];
-    memset(buf,'\0',500);
-    memset(checkBuff,'\0',500);
+    char buf[1500];
+    char checkBuff[1500];
+    memset(buf,'\0',1500);
+    memset(checkBuff,'\0',1500);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
-    testGetStringOut(SensorOut[Temparature],SensorOut[Current],checkBuff,50);
+    testGetStringOut(*SensorOut,checkBuff,50);
     assert(strcmp(buf,checkBuff) == 0);
 }
 
-void testGetStringOut(float *sensor1,float *sensor2,char *buff,int sensorReadcnt)
+void testGetStringOut(float *sensor1,char *buff,int sensorReadcnt)
 {
     strcat(buff,"Temparature Sensor : Current Sensor\n");
     int i =0;
@@ -28,7 +28,7 @@ void testGetStringOut(float *sensor1,float *sensor2,char *buff,int sensorReadcnt
     while(i<sensorReadcnt)
     {
         memset(tempBuf,'\0',50);
-        sprintf(tempBuf,"%0.2f : %0.2f\n",sensor1[i],sensor2[i]);
+        sprintf(tempBuf,"%0.2f : %0.2f\n",sensor1[i],sensor1[sensorReadcnt+i]);
         strcat(buff,tempBuf);
     }
 }
