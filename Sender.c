@@ -6,23 +6,13 @@
 #include "Sender.h"
 #include "testCases_Sender.h"
 
-
 void GetTx_Sensor_val(float *SensorData,int totalSensorCnt,int totalSensorReadCnt,char *tx_Buffer)
 {
     char tempBuff[50];
     int readSensorCnt = 0;
-    int currentSensor =0;
-    if (totalSensorCnt > currentSensor)
+    if (totalSensorCnt > 0)
     {
-        while(totalSensorCnt > currentSensor)
-        {
-            if(currentSensor > 0)
-            {
-                strcat(tx_Buffer," : ");
-            }
-            strcat(tx_Buffer,Sensorname[currentSensor]);
-            currentSensor++;
-        }
+        getHeaderOfSendValue(totalSensorCnt,tx_Buffer);
         strcat(tx_Buffer,"\n");
         while(totalSensorReadCnt > readSensorCnt)
         {
@@ -54,4 +44,18 @@ void SendToServer()
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
     write(STDOUT_FILENO, buf, strlen(buf));
+}
+
+void getHeaderOfSendValue(int totalSensorCnt,char* tx_Buffer)
+{
+    int currentSensor =0;
+    while(totalSensorCnt > currentSensor)
+    {
+        if(currentSensor > 0)
+        {
+            strcat(tx_Buffer," : ");
+        }
+        strcat(tx_Buffer,Sensorname[currentSensor]);
+        currentSensor++;
+    }
 }
