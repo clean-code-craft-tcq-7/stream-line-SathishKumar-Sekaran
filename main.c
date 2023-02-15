@@ -6,12 +6,7 @@
 #include "testCases_Sender.h"
 
 
-const FuncPtrTestSenderType sendFunPtr[] =
-{
-    (FuncPtrTestSenderType) SendToServer,
-    (FuncPtrTestSenderType) testSendToServer
-};
-
+extern const FuncPtrTestSenderType sendFunPtr[2];
 int main(int argc, char *argv[])
 {
     if(argc == 1)

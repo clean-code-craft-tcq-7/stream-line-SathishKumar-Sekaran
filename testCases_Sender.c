@@ -6,6 +6,9 @@
 #include "Sender.h"
 #include "testCases_Sender.h"
 
+
+extern const FuncPtrTestSenderType sendFunPtr[2];
+
 void testSendToServer(char* buf,char* checkBuff)
 {
     float SensorOut[Max_Sensor][50];
