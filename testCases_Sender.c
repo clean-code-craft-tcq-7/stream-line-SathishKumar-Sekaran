@@ -30,6 +30,7 @@ void testGetStringOut(float *sensor1,char *buff,int sensorReadcnt)
         memset(tempBuf,'\0',50);
         sprintf(tempBuf,"%0.2f : %0.2f\n",sensor1[i],sensor1[sensorReadcnt+i]);
         strcat(buff,tempBuf);
+        i++;
     }
 }
 
