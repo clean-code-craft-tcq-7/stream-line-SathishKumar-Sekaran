@@ -9,10 +9,10 @@
 void testSendToServer()
 {
     float SensorOut[Max_Sensor][50];
-    char buf[1500];
-    char checkBuff[1500];
-    memset(buf,'\0',1500);
-    memset(checkBuff,'\0',1500);
+    char buf[5000];
+    char checkBuff[5000];
+    memset(buf,'\0',5000);
+    memset(checkBuff,'\0',5000);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
