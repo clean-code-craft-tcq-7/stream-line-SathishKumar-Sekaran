@@ -5,8 +5,6 @@
 #include "Sender.h"
 #include "testCases_Sender.h"
 
-
-extern const FuncPtrTestSenderType sendFunPtr[2];
 int main(int argc, char *argv[])
 {
     if(argc == 1)
@@ -21,7 +19,7 @@ int main(int argc, char *argv[])
     }
     else if(strcmp(argv[1],"-r") == 0)
     {
-        (*(sendFunPtr[0]))();
+        SendToServer();
     }
     return 0;
 }

@@ -6,16 +6,18 @@
 #include "Sender.h"
 #include "testCases_Sender.h"
 
-
-extern const FuncPtrTestSenderType sendFunPtr[2];
-
-void testSendToServer(char* buf,char* checkBuff)
+void testSendToServer()
 {
     float SensorOut[Max_Sensor][50];
+    char buf[500];
+    char checkBuff[500];
+    memset(buf,'\0',500);
+    memset(checkBuff,'\0',500);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
     testGetStringOut(SensorOut[Temparature],SensorOut[Current],checkBuff,50);
+    assert(strcmp(buff,checkBuff) == 0);
 }
 
 void testGetStringOut(float *sensor1,float *sensor2,char *buff,int sensorReadcnt)
@@ -73,12 +75,6 @@ void testCases_Sender()
         GetTx_Sensor_val(*SensorData,2,4,buff);
         assert(strcmp(buff,"Temparature Sensor : Current Sensor\n20.50 : 5.70\n14.00 : 8.90\n28.90 : 4.20\n36.70 : 6.30\n") == 0);
     }
-    {
-        char buff[500];
-        char checkBuff[500];
-        memset(buff,'\0',500);
-        memset(checkBuff,'\0',500);
-        ((Func2PtrSenderType)(*(sendFunPtr[1])))(buff,checkBuff);
-        assert(strcmp(buff,checkBuff) == 0);
-    }
+    //Test 50 data's get from each sensors
+    testSendToServer();
 }

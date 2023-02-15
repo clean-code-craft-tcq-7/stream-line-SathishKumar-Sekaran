@@ -6,11 +6,6 @@
 #include "Sender.h"
 #include "testCases_Sender.h"
 
-const FuncPtrTestSenderType sendFunPtr[] =
-{
-    (FuncPtrTestSenderType) SendToServer,
-    (FuncPtrTestSenderType) testSendToServer
-};
 
 void GetTx_Sensor_val(float *SensorData,int totalSensorCnt,int totalSensorReadCnt,char *tx_Buffer)
 {
