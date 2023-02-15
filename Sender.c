@@ -48,8 +48,8 @@ void GetTx_Sensor_val(float *SensorData,int totalSensorCnt,int totalSensorReadCn
 void SendToServer()
 {
     float SensorOut[Max_Sensor][50];
-    char buf[500];
-    memset(buf,'\0',500);
+    char buf[1500];
+    memset(buf,'\0',1500);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
