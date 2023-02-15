@@ -76,5 +76,5 @@ void testCases_Sender()
         assert(strcmp(buff,"Temparature Sensor : Current Sensor\n20.50 : 5.70\n14.00 : 8.90\n28.90 : 4.20\n36.70 : 6.30\n") == 0);
     }
     //Test 50 data's get from each sensors
-    //testSendToServer();
+    testSendToServer();
 }
