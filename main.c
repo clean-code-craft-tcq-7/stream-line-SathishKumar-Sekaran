@@ -2,27 +2,30 @@
 #include <assert.h>
 #include <string.h>
 #include "Sender.h"
-#include "ReadSensorVal.h"
 #include "testCases_Sender.h"
 
-void testSendToServer(char* buf);
+
 const FuncPtrTestSenderType sendFunPtr[] =
 {
     (FuncPtrTestSenderType) SendToServer,
     (FuncPtrTestSenderType) testSendToServer
 };
 
-void testSendToServer(char* buf)
+int main(int argc, char *argv[])
 {
-    float SensorOut[Max_Sensor][50];
-    memset(buf,'\0',100);
-    Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Temparature]);
-    Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
-    GetTx_Sensor_val(*SensorOut,2,50,buf);
-}
+    if(argc == 1)
+    {
+        printf("Usage: %s [-t]/[-r]\n[-t]: To run the unit test cases\n[-r]: To send the sensors data via console output\n", argv[0]);
+        exit(0);
+    }
 
-int main()
-{
-    testCases_Sender();
+    if(strcmp(argv[1],"-t") == 0)
+    {
+        testCases_Sender();
+    }
+    else if(strcmp(argv[1],"-r") == 0)
+    {
+        (*(sendFunPtr[0]))();
+    }
     return 0;
 }
