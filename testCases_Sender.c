@@ -4,6 +4,7 @@
 #include <assert.h>
 #include "ReadSensorVal.h"
 #include "Sender.h"
+#include "testCases_Sender.h"
 
 extern const FuncPtrTestSenderType sendFunPtr[2];
 
