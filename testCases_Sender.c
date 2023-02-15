@@ -17,7 +17,7 @@ void testSendToServer()
     Get_Sensor_Readings(MAX_TEMP_RANGE,50,SensorOut[Current]);
     GetTx_Sensor_val(*SensorOut,2,50,buf);
     testGetStringOut(SensorOut[Temparature],SensorOut[Current],checkBuff,50);
-    assert(strcmp(buff,checkBuff) == 0);
+    assert(strcmp(buf,checkBuff) == 0);
 }
 
 void testGetStringOut(float *sensor1,float *sensor2,char *buff,int sensorReadcnt)
